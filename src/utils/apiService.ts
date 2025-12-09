@@ -15,8 +15,7 @@ export async function askAI(historyMessages, systemPrompt) {
     },
     body: JSON.stringify({
       model: "openai/gpt-oss-120b",
-      messages: messagesPayload,
-      regenerate: true
+      messages: messagesPayload
     }),
   });
 
