@@ -26,25 +26,24 @@ const InputArea: React.FC<InputProps> = ({ onSend }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="relative">
+    <form onSubmit={handleSubmit} className="flex justify-evenly items-center relative">
       {/* Action Buttons */}
-      <div className="absolute left-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
+      {/* <div className="absolute left-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
         <button type="button" className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
           <Paperclip className="w-5 h-5 text-gray-400 hover:text-blue-400" />
         </button>
         <button type="button" className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
           <Image className="w-5 h-5 text-gray-400 hover:text-blue-400" />
         </button>
-      </div>
+      </div> */}
 
       {/* Text Area */}
-      <textarea
+      <input
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="Message AI Assistant..."
-        rows={3}
-        className="w-full pl-16 pr-24 py-4 bg-gray-800 border border-gray-700 rounded-xl 
+        className="w-full p-4 bg-gray-800 border border-gray-700 rounded-xl 
                    focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent 
                    resize-none placeholder-gray-500"
       />
@@ -52,9 +51,9 @@ const InputArea: React.FC<InputProps> = ({ onSend }) => {
       {/* Right-side Buttons */}
       <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
 
-        <button type="button" className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
+        {/* <button type="button" className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
           <Smile className="w-5 h-5 text-gray-400 hover:text-yellow-400" />
-        </button>
+        </button> */}
 
         <button
           type="button"
@@ -84,7 +83,7 @@ const InputArea: React.FC<InputProps> = ({ onSend }) => {
       </div>
 
       {/* Quick Actions */}
-      <div className="absolute -top-12 right-0 flex space-x-2">
+      {/* <div className="absolute -top-12 right-0 flex space-x-2">
         <button className="flex items-center space-x-2 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 rounded-full text-sm transition-colors">
           <Zap className="w-4 h-4 text-yellow-400" />
           <span>Improve writing</span>
@@ -97,7 +96,7 @@ const InputArea: React.FC<InputProps> = ({ onSend }) => {
           <Zap className="w-4 h-4 text-yellow-400" />
           <span>Translate</span>
         </button>
-      </div>
+      </div> */}
     </form>
   );
 };

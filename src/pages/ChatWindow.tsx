@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import MessageBubble from './MessageBubble';
 import InputArea from '../components/UI/InputArea';
 import { Bot, Settings, Share2, Download, Copy } from 'lucide-react';
-import {askAI} from "../utils/apiService"
+import { askAI } from "../utils/apiService"
+import TypingIndicator from '../components/UI/TypingIndicator';
 const ChatWindow: React.FC = () => {
   const [messages, setMessages] = useState([
     {
@@ -13,6 +14,8 @@ const ChatWindow: React.FC = () => {
     }
   ]);
 
+  const [isTyping, setIsTyping] = useState(false)
+
   const sendMessage = async (userText: string) => {
     const newUserMsg = {
       id: Date.now(),
@@ -22,10 +25,14 @@ const ChatWindow: React.FC = () => {
 
     setMessages(prev => [...prev, newUserMsg]);
 
+    setIsTyping(true)
+
     const aiResponse = await askAI(
       [...messages, newUserMsg],
       "You are a helpful AI assistant"
     );
+
+    setIsTyping(false)
 
     const newAiMsg = {
       id: Date.now() + 1,
@@ -49,7 +56,7 @@ const ChatWindow: React.FC = () => {
               <Bot className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h2 className="font-bold text-white">AI Assistant Chat</h2>
+              <h2 className="font-bold text-white">Lumi Talk</h2>
               <p className="text-sm text-gray-400">Always learning • Context-aware</p>
             </div>
           </div>
@@ -72,11 +79,12 @@ const ChatWindow: React.FC = () => {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className="flex-1 overflow-y-auto p-6 scrollbar-custom">
         <div className="max-w-3xl mx-auto space-y-8">
           {messages.map(msg => (
             <MessageBubble key={msg.id} message={msg} />
           ))}
+         <i className='font-medium'> {isTyping && <TypingIndicator/>}</i>
         </div>
       </div>
 

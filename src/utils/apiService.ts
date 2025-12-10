@@ -1,7 +1,7 @@
-export async function askAI(historyMessages, systemPrompt) {
+export async function askAI(historyMessages:any, systemPrompt:any) {
   const messagesPayload = [
     { role: "system", content: systemPrompt },
-    ...historyMessages.map(m => ({
+    ...historyMessages.map((m:any) => ({
       role: m.role,
       content: m.content
     }))

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Bot, User, Copy, Check, ThumbsUp, ThumbsDown, Volume2, Edit } from 'lucide-react';
 import LoadingDots from '../components/UI/LoadingDots';
+import ReactMarkdown from "react-markdown";
 
 interface Message {
   id: number;
@@ -32,11 +33,10 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
     <div className={`flex space-x-4 ${isAI ? '' : 'flex-row-reverse space-x-reverse'}`}>
       {/* Avatar */}
       <div className="flex-shrink-0">
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-          isAI 
-            ? 'bg-gradient-to-br from-blue-500 to-purple-600' 
+        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isAI
+            ? 'bg-gradient-to-br from-blue-500 to-purple-600'
             : 'bg-gradient-to-br from-gray-600 to-gray-700'
-        }`}>
+          }`}>
           {isAI ? (
             <Bot className="w-4 h-4 text-white" />
           ) : (
@@ -47,16 +47,14 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
 
       {/* Message Content */}
       <div className={`flex-1 ${isAI ? '' : 'flex justify-end'}`}>
-        <div className={`max-w-[80%] rounded-2xl p-5 ${
-          isAI 
-            ? 'bg-gray-800 border border-gray-700' 
+        <div className={`max-w-[80%] rounded-2xl p-5 ${isAI
+            ? 'bg-gray-800 border border-gray-700'
             : 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/20'
-        }`}>
+          }`}>
           {/* Header */}
           <div className="flex items-center justify-between mb-3">
-            <span className={`text-sm font-semibold ${
-              isAI ? 'text-blue-300' : 'text-purple-300'
-            }`}>
+            <span className={`text-sm font-semibold ${isAI ? 'text-blue-300' : 'text-purple-300'
+              }`}>
               {isAI ? 'AI Assistant' : 'You'}
             </span>
             <span className="text-xs text-gray-400">{message.timestamp}</span>
@@ -64,11 +62,26 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
 
           {/* Message Text */}
           <div className="prose prose-invert max-w-none">
-            <div className="whitespace-pre-wrap text-gray-100 leading-relaxed">
-              {message.content}
+            <div className="whitespace-pre-wrap text-gray-100 leading-relaxed prose prose-invert max-w-none">
+              <ReactMarkdown
+                components={{
+                  strong: ({ node, ...props }) => (
+                    <strong className="font-bold" {...props} />
+                  ),
+                  em: ({ node, ...props }) => (
+                    <em className="italic text-gray-200" {...props} />
+                  ),
+                  p: ({ node, ...props }) => <p className="my-1" {...props} />,
+                  code: ({ node, ...props }) => (
+                    <code className="bg-gray-700 px-1 py-0.5 rounded text-sm text-green-200" {...props} />
+                  ),
+                }}
+              >
+                {message.content}
+              </ReactMarkdown>
               {message.isStreaming && <LoadingDots />}
             </div>
-            
+
             {/* Code Block */}
             {message.code && (
               <div className="mt-4 rounded-lg overflow-hidden border border-gray-700">
@@ -101,29 +114,27 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                 )}
                 <span>{copied ? 'Copied!' : 'Copy code'}</span>
               </button>
-              
+
               <button className="p-1.5 hover:bg-gray-700 rounded-lg transition-colors">
                 <Volume2 className="w-4 h-4" />
               </button>
-              
+
               <button
                 onClick={() => setLiked(!liked)}
-                className={`p-1.5 rounded-lg transition-colors ${
-                  liked ? 'bg-green-900/30 text-green-400' : 'hover:bg-gray-700'
-                }`}
+                className={`p-1.5 rounded-lg transition-colors ${liked ? 'bg-green-900/30 text-green-400' : 'hover:bg-gray-700'
+                  }`}
               >
                 <ThumbsUp className="w-4 h-4" />
               </button>
-              
+
               <button
                 onClick={() => setDisliked(!disliked)}
-                className={`p-1.5 rounded-lg transition-colors ${
-                  disliked ? 'bg-red-900/30 text-red-400' : 'hover:bg-gray-700'
-                }`}
+                className={`p-1.5 rounded-lg transition-colors ${disliked ? 'bg-red-900/30 text-red-400' : 'hover:bg-gray-700'
+                  }`}
               >
                 <ThumbsDown className="w-4 h-4" />
               </button>
-              
+
               <button className="p-1.5 hover:bg-gray-700 rounded-lg transition-colors">
                 <Edit className="w-4 h-4" />
               </button>
