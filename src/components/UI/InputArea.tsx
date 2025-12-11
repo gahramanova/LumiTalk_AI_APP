@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Paperclip, Mic, Image, Smile, Zap } from 'lucide-react';
+import { Send, Mic, } from 'lucide-react';
 
 interface InputProps {
   onSend: (msg: string) => void;
