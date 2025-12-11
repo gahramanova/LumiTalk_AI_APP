@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# LumiTalk AI – Frontend-Only AI Chat Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern AI-powered chat application built entirely on the frontend using **Groq API**, **React**, **TypeScript**, and **TailwindCSS**.
 
-Currently, two official plugins are available:
+LumiTalk AI demonstrates real-world AI integration, clean UI/UX, persistent multi-chat architecture, and seamless communication with LLMs using OpenAI-compatible endpoints.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🔥 AI Integration (Groq API, OpenAI-Compatible)
+- Direct communication with Groq’s `/openai/v1/chat/completions` endpoint  
+- Uses models such as:
+  - **openai/gpt-oss-120b**
+  - And other Groq models  
+- Extremely fast inference thanks to Groq’s accelerated infrastructure  
+- 100% frontend-only integration using simple POST requests (no backend required)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 💬 Multi-Chat System (LocalStorage Persistence)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Each chat contains:
+- `id`
+- `title`
+- `messages[]`
+- `createdAt`
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Additional functionality:
+- Chats persist automatically via **LocalStorage**
+- Chats load instantly after refresh
+- Clean sidebar with:
+  - Create new chat  
+  - Switch between chats  
+  - Delete chat (optional)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Modern UI / UX
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Built using **TailwindCSS**, featuring:
+- Fully responsive, minimalistic layout
+- Stable input field (never resizes even with long text or code)
+- Automatic line wrapping (no overflow)
+- Auto-scroll to the latest message
+- Distinct styles for user and AI messages
+- Clean rendering for code blocks inside AI responses
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 🧩 Autocomplete & Prompt Suggestions
+
+- Smart placeholder suggestions  
+- Auto-generated recommended prompts  
+- Smooth, intuitive typing experience  
+
+---
+
+## 🏗️ Project Architecture
+
+### Frontend
+- **React + TypeScript** for scalable UI and logic  
+- **TailwindCSS** for styling  
+- **Custom Hooks** for managing chat state, input, and API behavior  
+- **LocalStorage** for persistent multi-chat storage (no backend database)
+
+---
+
+## 🛠️ Tech Stack
+
+- **React**
+- **TypeScript**
+- **TailwindCSS**
+- **Groq API**
+- **Vite** (optional if you used it)
+
+---
+
+## 📦 Installation & Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
