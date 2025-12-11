@@ -34,8 +34,8 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       {/* Avatar */}
       <div className="flex-shrink-0">
         <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isAI
-            ? 'bg-gradient-to-br from-blue-500 to-purple-600'
-            : 'bg-gradient-to-br from-gray-600 to-gray-700'
+          ? 'bg-gradient-to-br from-blue-500 to-purple-600'
+          : 'bg-gradient-to-br from-gray-600 to-gray-700'
           }`}>
           {isAI ? (
             <Bot className="w-4 h-4 text-white" />
@@ -48,8 +48,8 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
       {/* Message Content */}
       <div className={`flex-1 ${isAI ? '' : 'flex justify-end'}`}>
         <div className={`max-w-[80%] rounded-2xl p-5 ${isAI
-            ? 'bg-gray-800 border border-gray-700'
-            : 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/20'
+          ? 'bg-gray-800 border border-gray-700'
+          : 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/20'
           }`}>
           {/* Header */}
           <div className="flex items-center justify-between mb-3">
@@ -84,7 +84,8 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
 
             {/* Code Block */}
             {message.code && (
-              <div className="mt-4 rounded-lg overflow-hidden border border-gray-700">
+              <div className="mt-4 rounded-lg border border-gray-700 bg-gray-950 overflow-hidden max-w-full">
+                {/* Header */}
                 <div className="flex items-center justify-between px-4 py-2 bg-gray-900 border-b border-gray-700">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -93,11 +94,18 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
                   </div>
                   <span className="text-xs text-gray-400">index.jsx</span>
                 </div>
-                <pre className="p-4 bg-gray-950 overflow-x-auto">
-                  <code className="text-sm text-gray-300">{message.code}</code>
-                </pre>
+
+                {/* Code content */}
+                <div className="max-w-full overflow-x-auto">
+                  <pre className="p-4 text-sm text-gray-300 whitespace-pre rounded-b-lg">
+                    <code>
+                      {message.code}
+                    </code>
+                  </pre>
+                </div>
               </div>
             )}
+
           </div>
 
           {/* Actions */}
