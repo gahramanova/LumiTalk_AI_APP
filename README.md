@@ -1,6 +1,6 @@
 # LumiTalk AI – Frontend-Only AI Chat Application
 
-A modern AI-powered chat application built entirely on the frontend using **Groq API**, **React**, **TypeScript**, and **TailwindCSS**.
+A modern AI-powered application built entirely on the frontend using **Groq API**, **React**, **TypeScript**, and **TailwindCSS**.
 
 LumiTalk AI demonstrates real-world AI integration, clean UI/UX, persistent multi-chat architecture, and seamless communication with LLMs using OpenAI-compatible endpoints.
 
