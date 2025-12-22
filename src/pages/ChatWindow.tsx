@@ -74,7 +74,7 @@ const ChatWindow: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
+            {/* <div className="flex items-center space-x-2">
               <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors group relative">
                 <Share2 className="w-5 h-5 text-gray-400 group-hover:text-blue-400" />
               </button>
@@ -87,7 +87,7 @@ const ChatWindow: React.FC = () => {
               <button className="p-2 hover:bg-gray-800 rounded-lg transition-colors">
                 <Settings className="w-5 h-5 text-gray-400 hover:text-blue-400" />
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
 

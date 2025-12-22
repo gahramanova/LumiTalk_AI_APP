@@ -1,13 +1,13 @@
-import { Sidebar } from 'lucide-react';
 import React from 'react';
 import ChatWindow from "../pages/ChatWindow";
+// import Sidebar from '../pages/Sidebar';
 
 const ChatLayout: React.FC = () => {
   return (
     <div className="flex h-screen bg-gray-900 text-gray-100">
       {/* Left Sidebar - Memory/Conversations */}
       <div className="h-full">
-        <Sidebar />
+        {/* <Sidebar /> */}
       </div>
       
       {/* Main Chat Area */}
