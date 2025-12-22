@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MessageBubble from './MessageBubble';
 import InputArea from '../components/UI/InputArea';
-import { Bot, Settings, Share2, Download, Copy } from 'lucide-react';
+import { Bot } from 'lucide-react';
 import { askAI } from "../utils/apiService"
 import TypingIndicator from '../components/UI/TypingIndicator';
 
